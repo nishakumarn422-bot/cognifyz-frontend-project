@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Level 3 - API & Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 32px;
+      }
+
+      /* API Section */
+      #api-section {
+        margin: 30px auto;
+        max-width: 600px;
+      }
+
+      #fetch-btn {
+        padding: 10px 25px;
+        font-size: 16px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      #fetch-btn:hover {
+        background-color: #2980b9;
+      }
+
+      #post-container {
+        margin-top: 20px;
+        text-align: left;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      #post-container h3 {
+        color: #2c3e50;
+      }
+
+      #post-container p {
+        color: #555;
+      }
+
+      /* Form Section */
+      #form-section {
+        margin: 40px auto;
+        max-width: 500px;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: left;
+      }
+
+      #form-section h2 {
+        text-align: center;
+        color: #2c3e50;
+      }
+
+      label {
+        font-size: 14px;
+        color: #333;
+        display: block;
+        margin-top: 15px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      #submit-btn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      #submit-btn:hover {
+        background-color: #27ae60;
+      }
+
+      #success-msg {
+        display: none;
+        margin-top: 15px;
+        color: green;
+        font-size: 16px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Level 3 - API & Form Validation</h1>
+
+    <!-- Task 5: API Integration -->
+    <div id="api-section">
+      <h2>📡 API Data</h2>
+      <button id="fetch-btn" onclick="fetchData()">Fetch Post from API</button>
+      <div id="post-container" style="display:none;">
+        <h3 id="post-title"></h3>
+        <p id="post-body"></p>
+      </div>
+    </div>
+
+    <!-- Task 6: Form with Validation -->
+    <div id="form-section">
+      <h2>📝 Contact Form</h2>
+
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" />
+      <div class="error" id="name-error"></div>
+
+      <label>Email:</label>
+      <input type="email" id="email" placeholder="Enter your email" />
+      <div class="error" id="email-error"></div>
+
+      <label>Phone:</label>
+      <input type="text" id="phone" placeholder="Enter your phone number" />
+      <div class="error" id="phone-error"></div>
+
+      <button id="submit-btn" onclick="validateForm()">Submit</button>
+      <div id="success-msg">✅ Form submitted successfully!</div>
+    </div>
+
+    <script>
+      // Task 5: Fetch API
+      function fetchData() {
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('post-title').textContent = data.title;
+            document.getElementById('post-body').textContent = data.body;
+            document.getElementById('post-container').style.display = 'block';
+          })
+          .catch(error => console.error('Error:', error));
+      }
+
+      // Task 6: Form Validation
+      function validateForm() {
+        let valid = true;
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        // Name check
+        if (name === '') {
+          document.getElementById('name-error').textContent = 'Name is required!';
+          valid = false;
+        } else {
+          document.getElementById('name-error').textContent = '';
+        }
+
+        // Email check
+        if (email === '') {
+          document.getElementById('email-error').textContent = 'Email is required!';
+          valid = false;
+        } else if (!email.includes('@')) {
+          document.getElementById('email-error').textContent = 'Enter a valid email!';
+          valid = false;
+        } else {
+          document.getElementById('email-error').textContent = '';
+        }
+
+        // Phone check
+        if (phone === '') {
+          document.getElementById('phone-error').textContent = 'Phone is required!';
+          valid = false;
+        } else if (phone.length < 10) {
+          document.getElementById('phone-error').textContent = 'Enter valid 10 digit number!';
+          valid = false;
+        } else {
+          document.getElementById('phone-error').textContent = '';
+        }
+
+        if (valid) {
+          document.getElementById('success-msg').style.display = 'block';
+        }
+      }
+    </script>
+
+  </body>
+</html>

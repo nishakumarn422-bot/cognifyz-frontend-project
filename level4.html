@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Level 4 - Bootstrap & Styling</title>
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --dark-color: #2c3e50;
+        --light-bg: #f0f8ff;
+        --font-size-large: 36px;
+        --font-size-medium: 18px;
+        --border-radius: 10px;
+      }
+
+      body {
+        background-color: var(--light-bg);
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: var(--dark-color) !important;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+        border-radius: var(--border-radius);
+        margin: 20px;
+      }
+
+      .hero-section h1 {
+        font-size: var(--font-size-large);
+      }
+
+      .hero-section p {
+        font-size: var(--font-size-medium);
+      }
+
+      .card {
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: var(--border-radius);
+      }
+
+      .btn-success {
+        background-color: var(--secondary-color);
+        border: none;
+        border-radius: var(--border-radius);
+      }
+
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#home">Cognifyz Internship</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section" id="home">
+      <h1>Welcome to Cognifyz Internship</h1>
+      <p>Front-End Development Project</p>
+      <a href="#tasks" class="btn btn-light mt-3">Get Started</a>
+    </div>
+
+    <!-- About Section -->
+    <div class="container mt-4" id="about">
+      <div class="card p-4 text-center">
+        <h2 style="color: var(--dark-color);">About This Project</h2>
+        <p style="color: #555; font-size: 16px;">
+          This is a Front-End Development Internship project by <strong>Nisha.K</strong> 
+          at Cognifyz Technologies. The project covers HTML, CSS, JavaScript, 
+          API Integration, Bootstrap, and CSS Variables across 4 levels.
+        </p>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="container mt-4" id="tasks">
+      <h2 class="text-center mb-4" style="color: var(--dark-color);">My Tasks</h2>
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <div class="card p-3">
+            <h5 class="card-title">✅ Level 1</h5>
+            <p class="card-text">Basic HTML & Inline CSS completed successfully.</p>
+            <a href="level1.html" class="btn btn-primary">View</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card p-3">
+            <h5 class="card-title">✅ Level 2</h5>
+            <p class="card-text">Responsive Design & Interactive Button completed.</p>
+            <a href="level2.html" class="btn btn-primary">View</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card p-3">
+            <h5 class="card-title">✅ Level 3</h5>
+            <p class="card-text">API Integration & Form Validation completed.</p>
+            <a href="level3.html" class="btn btn-primary">View</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="container mt-2" id="contact">
+      <div class="card p-4 mx-auto" style="max-width: 500px;">
+        <h4 class="text-center mb-3" style="color: var(--dark-color);">📝 Contact Us</h4>
+
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" />
+          <div class="text-danger small" id="name-error"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+          <div class="text-danger small" id="email-error"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" placeholder="Enter your phone" />
+          <div class="text-danger small" id="phone-error"></div>
+        </div>
+
+        <button class="btn btn-success w-100" onclick="validateForm()">Submit</button>
+        <div class="text-success text-center mt-2" id="success-msg" style="display:none;">
+          ✅ Form submitted successfully!
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Cognifyz Technologies | Front-End Internship</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function validateForm() {
+        let valid = true;
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        if (name === '') {
+          document.getElementById('name-error').textContent = 'Name is required!';
+          valid = false;
+        } else {
+          document.getElementById('name-error').textContent = '';
+        }
+
+        if (email === '') {
+          document.getElementById('email-error').textContent = 'Email is required!';
+          valid = false;
+        } else if (!email.includes('@')) {
+          document.getElementById('email-error').textContent = 'Enter a valid email!';
+          valid = false;
+        } else {
+          document.getElementById('email-error').textContent = '';
+        }
+
+        if (phone === '') {
+          document.getElementById('phone-error').textContent = 'Phone is required!';
+          valid = false;
+        } else if (phone.length < 10) {
+          document.getElementById('phone-error').textContent = 'Enter valid 10 digit number!';
+          valid = false;
+        } else {
+          document.getElementById('phone-error').textContent = '';
+        }
+
+        if (valid) {
+          document.getElementById('success-msg').style.display = 'block';
+        }
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Level 2 - Responsive & Interactive</title>
+    <style>
+      /* Basic Styles */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 36px;
+      }
+
+      p {
+        color: #555555;
+        font-size: 18px;
+      }
+
+      img {
+        width: 400px;
+        border-radius: 10px;
+      }
+
+      /* Task 4: Button Style */
+      button {
+        margin-top: 20px;
+        padding: 10px 30px;
+        font-size: 18px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      /* Task 3: Responsive Design */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        img {
+          width: 100%;
+        }
+
+        button {
+          font-size: 14px;
+          padding: 8px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Welcome to My Internship Project</h1>
+    <p>This is my front-end development internship project at Cognifyz Technologies.</p>
+
+    <img src="banner.jpg" alt="Internship Banner" />
+
+    <!-- Task 4: Interactive Button -->
+    <br/>
+    <button onclick="changeColor()">Click to Change Color</button>
+
+    <script>
+      function changeColor() {
+        const colors = ['#f0f8ff', '#ffe4e1', '#e8f5e9', '#fff9c4', '#fce4ec'];
+        const random = colors[Math.floor(Math.random() * colors.length)];
+        document.body.style.backgroundColor = random;
+      }
+    </script>
+
+  </body>
+</html>
